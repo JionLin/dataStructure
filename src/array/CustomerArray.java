@@ -1,5 +1,7 @@
 package array;
 
+import javax.sound.midi.Soundbank;
+
 /**
  * @program: dataStructure
  * @description: 自定义数组
@@ -16,6 +18,8 @@ public class CustomerArray {
 	// TODO: 2018/12/15 泛型数据结构
 	// TODO: 2018/12/15  动态数组
 	// TODO: 2018/12/15  时间复杂度分析
+
+
 	private int[] data;
 	private int size;
 
@@ -109,12 +113,7 @@ public class CustomerArray {
 			throw new IllegalArgumentException("add File index exception");
 		}
 		for (int i = size - 1; i >= index; i--) {
-			System.out.println("size= "+size);
-			System.out.println("index= "+index);
-
 			data[i + 1] = data[i];
-			System.out.println(data[i]);
-			System.out.println(data[i+1]);
 		}
 		data[index] = e;
 		size++;
@@ -133,6 +132,99 @@ public class CustomerArray {
 		add(0, e);
 	}
 
+	/**
+	 * @Description: 获取index索引位置的元素
+	 * @Param: [index]
+	 * @return: int
+	 * @Author: Join
+	 * @Date: 2018/12/16 8:30
+	 */
+	public int get(int index) {
+		if (index < 0 || index >= size) {
+			throw new IllegalArgumentException("get index exception");
+		}
+		return data[index];
+	}
+
+	/**
+	 * @Description: 修改index索引位置的元素为e
+	 * @Param: []
+	 * @return: void
+	 * @Author: Join
+	 * @Date: 2018/12/16 8:34
+	 */
+	public void set(int index, int e) {
+		if (index < 0 || index >= size) {
+			throw new IllegalArgumentException("get index exception");
+		}
+		data[index] = e;
+	}
+
+	/**
+	 * @Description: 查找数组中元素e所在的索引，如果不存在元素e，则返回-1
+	 * @Param: [e]
+	 * @return: int
+	 * @Author: Join
+	 * @Date: 2018/12/16 9:02
+	 */
+	public int getIndex(int e) {
+		for (int i = 0; i < size; i++) {
+			if (data[i] == e) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+
+	/**
+	 * @Description: 从数组中删除index位置的元素, 返回删除的元素
+	 * @Param: [index, e]
+	 * @return: int
+	 * @Author: Join
+	 * @Date: 2018/12/16 9:14
+	 */
+	public int remove(int index) {
+		if (index < 0 || index >= size) {
+			throw new IllegalArgumentException("get index exception");
+		}
+		int result = data[index];
+		for (int i = index + 1; i < size; i++) {
+			data[i - 1] = data[i];
+		}
+		size--;
+		return result;
+	}
+
+	/**
+	 * @Description: 从数组中删除第一个元素, 返回删除的元素
+	 * @Param: [index]
+	 * @return: int
+	 * @Author: Join
+	 * @Date: 2018/12/16 13:50
+	 */
+	public int removeFirst(int index) {
+		return remove(0);
+	}
+
+	/**
+	 * @Description: 从数组中删除最后一个元素, 返回删除的元素
+	 * @Param: [index]
+	 * @return: int
+	 * @Author: Join
+	 * @Date: 2018/12/16 13:51
+	 */
+	public int removeLast(int index) {
+		return remove(size - 1);
+	}
+
+	/**
+	 * @Description: 重写object的toString方法
+	 * @Param: []
+	 * @return: java.lang.String
+	 * @Author: Join
+	 * @Date: 2018/12/16 8:29
+	 */
 	@Override
 	public String toString() {
 
@@ -153,12 +245,22 @@ public class CustomerArray {
 		CustomerArray array = new CustomerArray();
 		for (int i = 0; i < 5; i++) {
 			array.addLast(i);
-			array.addFirst(i);
-
-			System.out.println(array);
 		}
-		array.add(3, 5);
 		System.out.println(array);
+		System.out.println(array.get(3));
+		array.set(2, 100);
+		System.out.println(array);
+		System.out.println("getIndex= " + array.getIndex(4));
+		System.out.println("remove= " + array.remove(2));
+		System.out.println(array);
+		System.out.println("============");
+		System.out.println(array.removeFirst(0));
+		System.out.println(array);
+		System.out.println("============");
+		System.out.println(array.removeLast(array.size - 1));
+		System.out.println(array);
+	}
 
-}
+
+
 }
