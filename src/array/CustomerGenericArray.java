@@ -255,26 +255,51 @@ public class CustomerGenericArray<E> {
             genericArray.addLast(i);
         }
         System.out.println(genericArray);
-        System.out.println("=======================");
+        System.out.println("===");
         //添加第一个
         genericArray.add(1, 100);
         System.out.println(genericArray);
-        System.out.println("=======================");
+        System.out.println("===");
 
         // 从数组中删除index索引位置的元素, 返回删除的元素
         genericArray.remove(1);
         System.out.println(genericArray);
-        System.out.println("=======================");
+        System.out.println("===");
 
         //删除最后一个
         genericArray.removeLast();
         System.out.println(genericArray);
-        System.out.println("=======================");
+        System.out.println("===");
+
         //删除第一个
         genericArray.removeFirst();
         System.out.println(genericArray);
 
+        //添加索引3为5
+        genericArray.add(3, 5);
+        System.out.println(genericArray);
+        System.out.println("===");
         //删除某个元素
         genericArray.removeElement(5);
+        System.out.println(genericArray);
+        System.out.println("===");
+
+        //修改index索引位置的元素为e
+        genericArray.set(1,22);
+        System.out.println(genericArray);
+        System.out.println("===");
+
+        //获取数组的长度
+        System.out.println(genericArray.getSize());
+        System.out.println("===");
+
+
+        //获取索引为2的元素的值
+        System.out.println(genericArray.getIndex(2));
+        System.out.println("===");
+
+        System.out.println(genericArray.find(22));
+        System.out.println("===");
+
     }
 }
