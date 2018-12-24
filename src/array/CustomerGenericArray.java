@@ -27,7 +27,7 @@ public class CustomerGenericArray<E> {
     }
 
     public CustomerGenericArray() {
-        this(20);
+        this(10);
     }
 
 
@@ -73,13 +73,14 @@ public class CustomerGenericArray<E> {
      * @Date: 2018/12/16 14:21
      */
     public void add(int index, E e) {
-        if (index == data.length) {
-            resize(2 * data.length);
-        }
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("索引参数错误");
         }
-        for (int i = size - 1; i >= index; i++) {
+        if (index == data.length) {
+            resize(2 * data.length);
+        }
+
+        for (int i = size - 1; i >= index; i--) {
             data[i + 1] = data[i];
         }
         data[index] = e;
@@ -166,9 +167,12 @@ public class CustomerGenericArray<E> {
         }
         E e = data[index];
         for (int i = index + 1; i < size; i++) {
-            data[i] = data[i + 1];
+            data[i - 1] = data[i];
         }
         size--;
+        if (size == data.length / 2) {
+            resize(data.length / 2);
+        }
         return e;
     }
 
@@ -202,7 +206,7 @@ public class CustomerGenericArray<E> {
      * @Author: Join
      * @Date: 2018/12/18
      */
-    public void remove(E e) {
+    public void removeElement(E e) {
         //拿到其中的索引
         int data = find(e);
         if (data != -1) {
@@ -221,8 +225,8 @@ public class CustomerGenericArray<E> {
         E[] newData = (E[]) new Object[newCapacity];
         for (int i = 0; i < size; i++) {
             newData[i] = data[i];
-            data = newData;
         }
+        data = newData;
 
     }
 
@@ -246,16 +250,31 @@ public class CustomerGenericArray<E> {
     public static void main(String[] args) {
         //进行添加元素
         CustomerGenericArray<Integer> genericArray = new CustomerGenericArray<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 30; i++) {
             //添加最后一个
             genericArray.addLast(i);
         }
         System.out.println(genericArray);
+        System.out.println("=======================");
         //添加第一个
         genericArray.add(1, 100);
         System.out.println(genericArray);
-        //删除某个索引
+        System.out.println("=======================");
+
+        // 从数组中删除index索引位置的元素, 返回删除的元素
+        genericArray.remove(1);
+        System.out.println(genericArray);
+        System.out.println("=======================");
+
         //删除最后一个
+        genericArray.removeLast();
+        System.out.println(genericArray);
+        System.out.println("=======================");
         //删除第一个
+        genericArray.removeFirst();
+        System.out.println(genericArray);
+
+        //删除某个元素
+        genericArray.removeElement(5);
     }
 }
