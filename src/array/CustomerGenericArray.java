@@ -7,14 +7,6 @@ package array;
  * @create: 2018-12-16 14:02
  **/
 public class CustomerGenericArray<E> {
-    // TODO: 2018/12/15  带参构造 无参构造 数组的容量 是否为空  元素个数
-    // TODO: 2018/12/15  向所有元素后添加一个新元素 向所有元素前添加一个新元素 在index索引的位置插入一个新元素e
-    // TODO: 2018/12/15  获取index索引位置的元素  修改index索引位置的元素为e tostring方法
-    // TODO: 2018/12/15 查找数组中元素e所在的索引，如果不存在元素e，则返回-1  从数组中删除index位置的元素, 返回删除的元素
-    // TODO: 2018/12/15 从数组中删除第一个元素, 返回删除的元素  从数组中删除最后一个元素, 返回删除的元素 从数组中删除元素e
-    // TODO: 2018/12/15 泛型数据结构
-    // TODO: 2018/12/15  动态数组
-    // TODO: 2018/12/15  时间复杂度分析
 
 
     private E[] data;
@@ -137,6 +129,16 @@ public class CustomerGenericArray<E> {
         data[index] = e;
     }
 
+    //是否有包含元素e,如果没有,返回false
+    public boolean isConstains(E e) {
+        for (int i = 0; i < size; i++) {
+            if (data[i].equals(e)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * @Description: 查找数组中元素e所在的索引，如果不存在元素e，则返回-1
      * @Param: [index, e]
@@ -146,7 +148,7 @@ public class CustomerGenericArray<E> {
      */
     public int find(E e) {
         for (int i = 0; i < size; i++) {
-            if (data[i] == e) {
+            if (data[i].equals(e)) {
                 return i;
             }
         }
@@ -155,7 +157,7 @@ public class CustomerGenericArray<E> {
     }
 
     /**
-     * @Description: 从数组中删除index位置的元素, 返回删除的元素
+     * @Description: 从数组中删除index位置的元素, 返回删除的元素 TODO 为什是这样
      * @Param: [index, e]
      * @return: E
      * @Author: Join
@@ -170,7 +172,7 @@ public class CustomerGenericArray<E> {
             data[i - 1] = data[i];
         }
         size--;
-        if (size == data.length / 2) {
+        if (size == data.length / 4 && size != data.length / 2) {
             resize(data.length / 2);
         }
         return e;
@@ -285,7 +287,7 @@ public class CustomerGenericArray<E> {
         System.out.println("===");
 
         //修改index索引位置的元素为e
-        genericArray.set(1,22);
+        genericArray.set(1, 22);
         System.out.println(genericArray);
         System.out.println("===");
 
@@ -299,6 +301,9 @@ public class CustomerGenericArray<E> {
         System.out.println("===");
 
         System.out.println(genericArray.find(22));
+        System.out.println("===");
+
+        System.out.println(genericArray.isConstains(16));
         System.out.println("===");
 
     }
