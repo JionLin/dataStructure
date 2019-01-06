@@ -162,8 +162,8 @@ public class CustomerGenericArray<E> {
 			resize(data.length / 2);
 		}
 		E e = data[index];
-		for (int i = index + 1; i < size; i++) {
-			data[i] = data[i + 1];
+		for (int i = size-1; i >=index+1; i++) {
+			data[i - 1] = data[i];
 		}
 		size--;
 		return e;

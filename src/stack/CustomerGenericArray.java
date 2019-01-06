@@ -1,4 +1,4 @@
-package quene;
+package stack;
 
 /**
  * @program: dataStructure
@@ -102,17 +102,18 @@ public class CustomerGenericArray<E> {
 	}
 
 	//从数组中删除index位置的元素,返回删除的元素 11
-	public void removeElement(int index) {
+	public E removeElement(int index) {
 		if (index < 0 || index >= size) {
 			throw new IllegalArgumentException("索引异常");
 		}
 		if (size == data.length / 4 && size != data.length / 2) {
 			resize(data.length / 2);
 		}
-		for (int i = size - 1; i >= index + 1; i--) {
+		for (int i = size - 1; i >= index + 1; i++) {
 			data[i - 1] = data[i];
 		}
 		size--;
+		return data[index];
 	}
 
 	//从数组中删除第一个元素,返回删除的元素 12
@@ -121,8 +122,8 @@ public class CustomerGenericArray<E> {
 	}
 
 	//从数组中删除最后一个元素,返回删除的元素 13
-	public void removeLast() {
-		 removeElement(size - 1);
+	public E removeLast() {
+		return removeElement(size - 1);
 	}
 
 	//toString方法 14 Array :  size=  length=   [1,2,3]
@@ -130,14 +131,14 @@ public class CustomerGenericArray<E> {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("CustomerGenericArray: size: %d,length: %d", size, data.length);
-		builder.append("quene [");
+		builder.append("[");
 		for (int i = 0; i < data.length; i++) {
 			builder.append(data[i] + " ,");
 			if (data.length == size - 1) {
 				builder.append(data[i]);
 			}
 		}
-		builder.append("] top");
+		builder.append("]");
 		return builder.toString();
 	}
 

@@ -1,4 +1,4 @@
-package quene;
+package stack;
 
 /**
  * @program: dataStructure
@@ -47,7 +47,5 @@ public interface Stack<E> {
     * @Date: 2018/12/25 
     */
     E peek();
-
-
 
 }
