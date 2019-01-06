@@ -44,8 +44,8 @@ public class Student {
 
     public static void main(String[] args) {
         CustomerGenericArray<Student> genericArray=new CustomerGenericArray<>();
-        Student student1=new Student("小强",18);
-        Student student2=new Student("小牛",22);
+        Student student1=new Student("尼玛",18);
+        Student student2=new Student("烦",22);
         Student student3=new Student("小黑",24);
         genericArray.addLast(student1);
         genericArray.addLast(student3);
