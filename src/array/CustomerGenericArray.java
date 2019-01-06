@@ -2,7 +2,7 @@ package array;
 
 /**
  * @program: dataStructure
- * @description: 自定义泛型数组
+ * @description: 自定义泛型数组  2019年1月6日 做好，问题找好
  * @author: Join
  * @create: 2018-12-16 14:02
  **/
@@ -65,9 +65,9 @@ public class CustomerGenericArray<E> {
 	 */
 	public void add(int index, E e) {
 		if (index == data.length) {
-			throw new IllegalArgumentException("索引越界");
+			resize(data.length * 2);
 		}
-		if (index < 0 || index >= size) {
+		if (index < 0 || index > size) {
 			throw new IllegalArgumentException("索引参数错误");
 		}
 		for (int i = index + 1; i < size; i++) {
@@ -96,7 +96,7 @@ public class CustomerGenericArray<E> {
 	 * @Date: 2018/12/16 14:22
 	 */
 	public void addLast(E e) {
-		add(size - 1, e);
+		add(size, e);
 	}
 
 	/**
@@ -158,6 +158,9 @@ public class CustomerGenericArray<E> {
 		if (index < 0 || index >= size) {
 			throw new IllegalArgumentException("索引参数错误");
 		}
+		if (index == data.length / 4 && data.length / 2 != 0) {
+			resize(data.length / 2);
+		}
 		E e = data[index];
 		for (int i = index + 1; i < size; i++) {
 			data[i] = data[i + 1];
@@ -165,8 +168,6 @@ public class CustomerGenericArray<E> {
 		size--;
 		return e;
 	}
-
-	//	  从数组中删除最后一个元素, 返回删除的元素 从数组中删除元素e
 
 	/**
 	 * @Description: 从数组中删除第一个元素, 返回删除的元素
@@ -179,6 +180,14 @@ public class CustomerGenericArray<E> {
 		return remove(0);
 	}
 
+
+	/**
+	* @Description: 删除最后一个元素
+	* @Param: []
+	* @return: E
+	* @Author: Join
+	* @Date: 2019/1/6
+	*/
 	public E removeLast() {
 		return remove(size - 1);
 	}
@@ -192,8 +201,17 @@ public class CustomerGenericArray<E> {
 			if (i != size - 1) {
 				builder.append(",");
 			}
-			builder.append("]");
 		}
+		builder.append("]");
 		return builder.toString();
+	}
+
+
+	private void resize(int newCapacity) {
+		E[] newData = (E[]) new Object[newCapacity];
+		for (int i = 0; i < size; i++) {
+			newData[i] = data[i];
+		}
+		data = newData;
 	}
 }

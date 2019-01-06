@@ -37,6 +37,7 @@ public class Student {
     @Override
     public String toString() {
 //        return String.format("Student(name:%s,id:%s)", name,id);
+//        %s 为中文占位符
         return String.format("Student(name: %s, id: %d)", name, id);
 
     }
