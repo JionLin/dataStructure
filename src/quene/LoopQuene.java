@@ -32,7 +32,7 @@ public class LoopQuene<E> implements quene<E> {
 	 */
 	@Override
 	public int getCapacity() {
-		return 0;
+		return data.length-1;
 	}
 
 	/**
@@ -44,7 +44,7 @@ public class LoopQuene<E> implements quene<E> {
 	 */
 	@Override
 	public int getSize() {
-		return 0;
+		return size;
 	}
 
 	/**
@@ -82,5 +82,9 @@ public class LoopQuene<E> implements quene<E> {
 	@Override
 	public E getFront() {
 		return null;
+	}
+
+	public boolean isEmpty() {
+		return front == tail;
 	}
 }
