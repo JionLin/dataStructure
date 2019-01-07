@@ -109,7 +109,7 @@ public class CustomerGenericArray<E> {
 		if (size == data.length / 4 && size != data.length / 2) {
 			resize(data.length / 2);
 		}
-		for (int i = size - 1; i >= index + 1; i--) {
+		for (int i = index + 1; i < size; i++) {
 			data[i - 1] = data[i];
 		}
 		size--;
@@ -122,7 +122,7 @@ public class CustomerGenericArray<E> {
 
 	//从数组中删除最后一个元素,返回删除的元素 13
 	public void removeLast() {
-		 removeElement(size - 1);
+		removeElement(size - 1);
 	}
 
 	//toString方法 14 Array :  size=  length=   [1,2,3]

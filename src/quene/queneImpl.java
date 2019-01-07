@@ -51,7 +51,7 @@ public class queneImpl<E> implements quene<E> {
 	 * @Date: 2019/1/6
 	 */
 	@Override
-	public void addElement(E e) {
+	public void enQuene(E e) {
 		array.addLast(e);
 	}
 
@@ -63,7 +63,7 @@ public class queneImpl<E> implements quene<E> {
 	 * @Date: 2019/1/6
 	 */
 	@Override
-	public void removeElement() {
+	public void deQuene() {
 		array.removeFirst();
 	}
 
@@ -75,7 +75,7 @@ public class queneImpl<E> implements quene<E> {
 	 * @Date: 2019/1/6
 	 */
 	@Override
-	public E findElementLast() {
+	public E getFront() {
 		return (E) array.getLast();
 	}
 
@@ -95,11 +95,11 @@ public class queneImpl<E> implements quene<E> {
 
 	public static void main(String[] args) {
 		queneImpl quene = new queneImpl();
-		for (int i = 0; i < 10; i++) {
-			quene.addElement(i);
+		for (int i = 0; i < 11; i++) {
+			quene.enQuene(i);
 			System.out.println(quene);
 		}
-		quene.removeElement();
+		quene.deQuene();
 		System.out.println(quene);
 	}
 }

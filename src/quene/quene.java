@@ -32,7 +32,7 @@ public interface quene<E> {
 	 * @Author: Join
 	 * @Date: 2019/1/6
 	 */
-	void addElement(E e);
+	void enQuene(E e);
 
 
 	/**
@@ -42,7 +42,7 @@ public interface quene<E> {
 	 * @Author: Join
 	 * @Date: 2019/1/6
 	 */
-	void removeElement();
+	void deQuene();
 
 	/**
 	 * @Description: 查询最后一个元素
@@ -51,5 +51,5 @@ public interface quene<E> {
 	 * @Author: Join
 	 * @Date: 2019/1/6
 	 */
-	E findElementLast();
+	E getFront();
 }

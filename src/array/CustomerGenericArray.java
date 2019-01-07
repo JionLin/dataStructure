@@ -162,7 +162,7 @@ public class CustomerGenericArray<E> {
 			resize(data.length / 2);
 		}
 		E e = data[index];
-		for (int i = size-1; i >=index+1; i++) {
+		for (int i = index + 1; i < size; i++) {
 			data[i - 1] = data[i];
 		}
 		size--;
@@ -182,12 +182,12 @@ public class CustomerGenericArray<E> {
 
 
 	/**
-	* @Description: 删除最后一个元素
-	* @Param: []
-	* @return: E
-	* @Author: Join
-	* @Date: 2019/1/6
-	*/
+	 * @Description: 删除最后一个元素
+	 * @Param: []
+	 * @return: E
+	 * @Author: Join
+	 * @Date: 2019/1/6
+	 */
 	public E removeLast() {
 		return remove(size - 1);
 	}

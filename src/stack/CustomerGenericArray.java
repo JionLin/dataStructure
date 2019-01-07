@@ -109,7 +109,7 @@ public class CustomerGenericArray<E> {
 		if (size == data.length / 4 && size != data.length / 2) {
 			resize(data.length / 2);
 		}
-		for (int i = size - 1; i >= index + 1; i++) {
+		for (int i = index + 1; i < size; i++) {
 			data[i - 1] = data[i];
 		}
 		size--;
