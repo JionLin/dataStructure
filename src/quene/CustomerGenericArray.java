@@ -97,7 +97,6 @@ public class CustomerGenericArray<E> {
 				return i;
 			}
 		}
-
 		return -1;
 	}
 
@@ -115,17 +114,28 @@ public class CustomerGenericArray<E> {
 		size--;
 	}
 
-	//从数组中删除第一个元素,返回删除的元素 12
+	/**
+	* @Description: 从数组中删除第一个元素
+	* @Param: []
+	* @return: void
+	* @Author: Join
+	* @Date: 2019/1/7
+	*/
 	public void removeFirst() {
 		removeElement(0);
 	}
 
-	//从数组中删除最后一个元素,返回删除的元素 13
+	/**
+	* @Description: 从数组中删除最后一个元素,返回删除的元素 13
+	* @Param: []
+	* @return: void
+	* @Author: Join
+	* @Date: 2019/1/7
+	*/
 	public void removeLast() {
 		removeElement(size - 1);
 	}
 
-	//toString方法 14 Array :  size=  length=   [1,2,3]
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

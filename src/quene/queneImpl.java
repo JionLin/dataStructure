@@ -76,7 +76,7 @@ public class queneImpl<E> implements quene<E> {
 	 */
 	@Override
 	public E getFront() {
-		return (E) array.getLast();
+		return (E) array.getFirst();
 	}
 
 	@Override
@@ -101,5 +101,6 @@ public class queneImpl<E> implements quene<E> {
 		}
 		quene.deQuene();
 		System.out.println(quene);
+		System.out.println(quene.getFront());
 	}
 }
