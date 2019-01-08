@@ -42,7 +42,7 @@ public interface quene<E> {
 	 * @Author: Join
 	 * @Date: 2019/1/6
 	 */
-	void deQuene();
+	E deQuene();
 
 	/**
 	 * @Description: 查询最后一个元素

@@ -101,37 +101,39 @@ public class CustomerGenericArray<E> {
 	}
 
 	//从数组中删除index位置的元素,返回删除的元素 11
-	public void removeElement(int index) {
+	public E removeElement(int index) {
 		if (index < 0 || index >= size) {
 			throw new IllegalArgumentException("索引异常");
 		}
 		if (size == data.length / 4 && size != data.length / 2) {
 			resize(data.length / 2);
 		}
+		E result = data[index];
 		for (int i = index + 1; i < size; i++) {
 			data[i - 1] = data[i];
 		}
 		size--;
+		return result;
 	}
 
 	/**
-	* @Description: 从数组中删除第一个元素
-	* @Param: []
-	* @return: void
-	* @Author: Join
-	* @Date: 2019/1/7
-	*/
-	public void removeFirst() {
-		removeElement(0);
+	 * @Description: 从数组中删除第一个元素
+	 * @Param: []
+	 * @return: void
+	 * @Author: Join
+	 * @Date: 2019/1/7
+	 */
+	public E removeFirst() {
+		return removeElement(0);
 	}
 
 	/**
-	* @Description: 从数组中删除最后一个元素,返回删除的元素 13
-	* @Param: []
-	* @return: void
-	* @Author: Join
-	* @Date: 2019/1/7
-	*/
+	 * @Description: 从数组中删除最后一个元素, 返回删除的元素 13
+	 * @Param: []
+	 * @return: void
+	 * @Author: Join
+	 * @Date: 2019/1/7
+	 */
 	public void removeLast() {
 		removeElement(size - 1);
 	}

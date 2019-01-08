@@ -2,13 +2,13 @@ package quene;
 
 /**
  * @program: dataStructure
- * @description:
+ * @description: 数组队列
  * @author: Join
  * @create: 2019-01-06 10:44
  **/
 public class queneImpl<E> implements quene<E> {
 
-	private CustomerGenericArray array;
+	private CustomerGenericArray<E> array;
 
 	//构造函数
 	public queneImpl(int capacity) {
@@ -63,8 +63,8 @@ public class queneImpl<E> implements quene<E> {
 	 * @Date: 2019/1/6
 	 */
 	@Override
-	public void deQuene() {
-		array.removeFirst();
+	public E deQuene() {
+		return array.removeFirst();
 	}
 
 	/**
