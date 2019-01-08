@@ -56,7 +56,7 @@ public class LoopQuene<E> implements quene<E> {
 
 	/**
 	 * @param e
-	 * @Description: 入队 先入先出 入队是往后
+	 * @Description: 入队 先入先出 入队是往后 往后压
 	 * @Param: []
 	 * @return: int
 	 * @Author: Join
@@ -75,7 +75,7 @@ public class LoopQuene<E> implements quene<E> {
 
 	/**
 	 * @Description: 出队 是往前出
-	 * @Param: []  front 为什么等于 其+1 取余 data.length
+	 * @Param: []  front 为什么等于 其+1 取余 data.length  出队,从最前面出,最前面的值就为null
 	 * @return: int
 	 * @Author: Join
 	 * @Date: 2019/1/6
