@@ -9,23 +9,6 @@ import java.util.Random;
  * @create: 2019-01-08 22:23
  **/
 public class testQuene {
-	// 测试使用q运行opCount个enqueueu和dequeue操作所需要的时间，单位：秒
-	private static double testQueue(quene<Integer> q, int opCount) {
-
-		long startTime = System.nanoTime();
-
-		Random random = new Random();
-		for (int i = 0; i < opCount; i++) {
-			q.enQuene(random.nextInt(Integer.MAX_VALUE));
-		}
-		for (int i = 0; i < opCount; i++) {
-			q.deQuene();
-		}
-
-		long endTime = System.nanoTime();
-
-		return (endTime - startTime) / 1000000000.0;
-	}
 
 	public static void main(String[] args) {
 
@@ -38,5 +21,20 @@ public class testQuene {
 		LoopQuene<Integer> loopQueue = new LoopQuene<Integer>();
 		double time2 = testQueue(loopQueue, opCount);
 		System.out.println("LoopQueue, time: " + time2 + " s");
+
+	}
+
+	// 测试使用q运行opCount个enqueueu和dequeue操作所需要的时间，单位：秒
+	private static double testQueue(quene<Integer> queue, int opCount) {
+		long startTime = System.nanoTime();
+		Random random = new Random();
+		for (int i = 0; i < opCount; i++) {
+			queue.enQuene(random.nextInt(Integer.MAX_VALUE));
+		}
+		for (int i = 0; i < opCount; i++) {
+			queue.deQuene();
+		}
+		long endTime = System.nanoTime();
+		return (endTime - startTime) / 1000000000.0;
 	}
 }

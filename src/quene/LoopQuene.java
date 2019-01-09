@@ -31,7 +31,7 @@ public class LoopQuene<E> implements quene<E> {
 	}
 
 	/**
-	 * @Description: 获取容量 为什么-1  需要空出一个空间来,
+	 * @Description: 获取容量 为什么-1  需要空出一个空间来,front =size 时,数组为空 只有当(tail+1)%data.length==front 才为满
 	 * @Param: []
 	 * @return: int
 	 * @Author: Join
@@ -64,13 +64,13 @@ public class LoopQuene<E> implements quene<E> {
 	 */
 	@Override
 	public void enQuene(E e) {
-
 		if ((tail + 1) % data.length == front) {
 			resize(getCapacity() * 2);
 		}
-		data[tail] = e;
 		tail = (tail + 1) % data.length;
+		data[tail] = e;
 		size++;
+
 	}
 
 	/**
@@ -85,15 +85,14 @@ public class LoopQuene<E> implements quene<E> {
 		if (isEmpty()) {
 			throw new IllegalArgumentException("quene is Empty");
 		}
-		E result = data[front];
-		data[front] = null;
-		front = (front + 1) % data.length;
-		size--;
-		if (size == getCapacity() / 4 && getCapacity() / 2 != 0) {
+		E result = data[front];  //进行查询第一个参数
+		data[front]=null; //并且置为空
+		front = (front + 1) % data.length; //front 往后挪移一位
+		size--;//size --
+		if (size == data.length / 4 && data.length / 2 != 0) {
 			resize(getCapacity() / 2);
 		}
 		return result;
-
 	}
 
 	/**
@@ -106,7 +105,7 @@ public class LoopQuene<E> implements quene<E> {
 	@Override
 	public E getFront() {
 		if (isEmpty()) {
-			throw new IllegalArgumentException("getFront is Empty");
+			throw new IllegalArgumentException("Quene is Empty");
 		}
 		return data[front];
 	}
@@ -125,17 +124,18 @@ public class LoopQuene<E> implements quene<E> {
 	private void resize(int capacity) {
 		E[] newData = (E[]) new Object[capacity + 1];
 		for (int i = 0; i < size; i++) {
-			newData[i] = data[(i + front) % data.length];
+			newData[i] = data[(front + i) % data.length];
 		}
 		data = newData;
 		front = 0;
 		tail = size;
+
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(String.format("LoopQuene: size : %d ,capacity : %d\n",size,getCapacity()));
+		stringBuilder.append(String.format("LoopQuene: size : %d ,capacity : %d\n", size, getCapacity()));
 		stringBuilder.append("front [");
 		for (int i = front; i != tail; i = (i + 1) % data.length) {
 			stringBuilder.append(data[i]);
