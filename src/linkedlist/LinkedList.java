@@ -132,8 +132,8 @@ public class LinkedList<E> {
 			linkedList.addFirst(i);
 			System.out.println(linkedList);
 		}
-		linkedList.addLast(100);
-		System.out.println(linkedList);
+//		linkedList.addLast(100);
+//		System.out.println(linkedList);
 	}
 
 }
